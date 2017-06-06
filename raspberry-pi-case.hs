@@ -82,10 +82,10 @@ extrude3d vec num obj = union $ loop (0,0,0) 0 []
 
   
 
-main = writeBinSTL 1 "raspberry-pi-case.stl" $ union [
-  modelAPlus ,
-  translate (80,0,0) cover ,
-  translate (160,0,0) (
+main = do
+  writeBinSTL 1 "raspberry-pi-board.stl" $ modelAPlus
+  writeBinSTL 1 "raspberry-pi-cover1.stl" $ cover
+  writeBinSTL 1 "raspberry-pi-cover2.stl" $ 
     union [
        difference [
           extrude3d (0,0,-0.5) 10 peripheral,
@@ -94,6 +94,3 @@ main = writeBinSTL 1 "raspberry-pi-case.stl" $ union [
           ],
        futa
        ]
-    )
-  ]
-
